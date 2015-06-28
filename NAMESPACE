@@ -1,0 +1,13 @@
+export(remoteRm, remoteLs, bigGP.init, bigGP.quit, bigGP.exit, push, pull, collectVector, distributeVector, collectDiagonal, collectTriangularMatrix, collectRectangularMatrix, remoteCalc, remoteForwardsolve, remoteBacksolve, remoteCalcChol, remoteMultChol, remoteCrossProdMatVec, remoteCrossProdMatSelf, remoteCrossProdMatSelfDiag, remoteConstructRnormVector, remoteConstructRnormMatrix, remoteGetIndices, calcIJ, .bigGP.fill, alloc, 
+       localRm, localAssign, localPullTest, localPull, localCollectDiagonalTest, localCollectDiagonal, localCollectVectorTest, localCollectVector, localCollectTriangularMatrixTest, localCollectTriangularMatrix, localCollectRectangularMatrixTest, localCollectRectangularMatrix, localDistributeVectorTest, localDistributeVector, localCalc, localForwardsolve, localBacksolve, localCalcChol, localMultChol, localCrossProdMatVec, localCrossProdMatSelf, localCrossProdMatSelfDiag, localConstructRnormMatrix, localGetVectorIndices, localGetTriangularMatrixIndices, localGetRectangularMatrixIndices, localKrigeProblemConstructMean, localKrigeProblemConstructCov,
+       krigeProblem, distributedKrigeProblem)
+
+exportClasses(
+    krigeProblem,
+     distributedKrigeProblem 
+)
+
+useDynLib(bigGP, .registration = TRUE)
+
+import("Rmpi")
+import("methods")

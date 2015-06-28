@@ -1,0 +1,23 @@
+Version 0.1-6 (6/29/15):
+
+* put rsprng into Additional_repositories in DESCRIPTION as it is no longer on CRAN
+
+* changed DESCRIPTION to point to JSS article rather than arXiv
+
+Version 0.1-5 (1/16/15):
+
+* modified CITATION and \references in .Rd files to refer to published JSS article about the package
+
+Version 0.1-4 (12/3/14): 
+
+* moved ax_{blas,lapack}.m4 and configure.alt{,.ac} to tools subdirectory to satisfy CRAN requirements on top-level directory content.
+
+* now call init.sprng as rsprng::init.sprng
+
+* added warning in help on collectRectangularMatrix that method is not to be used with symmetric matrices
+
+Version 0.1-3 (5/23/14): 
+
+* Wrapped all examples in \dontrun{} to satisfy CRAN requirements that examples not leave processes running or have more than two processes running.
+
+* Added some additional info to the INSTALL file.

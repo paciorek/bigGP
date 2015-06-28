@@ -1,0 +1,20 @@
+* make a tests directory? (lme4 has one; how does this relate to examples)
+
+* issue with bigGP dependency on Rmpi (not installing when include dependency) on hopper
+
+* add auxil fxns to describe padding?
+
+COMMENTS:
+
+* p. 22 of R ext libs manual has Mac info on configure
+
+* it seems that sometimes a simple library(Rmpi) and then spawning fails on smeagol; in 15 tries on arwen, no problems
+
+* next step would be to not have dProblem but dMat, dVec that contain knowledge of their indices, constructor, values - localConstruct then takes the dMat and uses dMat$constructFxn with dMat$indices to assign into dMat$value
+
+* I use require rather than imports for Rmpi despite comments in
+   R-exts manual that suggest it should be imports (because I don't
+   need to attach Rmpi for loading bigGP) because if use imports, the
+   version of Rmpi is not checked when bigGP is installed
+
+* For pkg submission, make sure: configure, configure.ac, configure.alt, configure.alt.ac, ax files, and   src/Makevars.in are included; don't include src/Makevars

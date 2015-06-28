@@ -1,0 +1,24 @@
+citHeader("To cite bigGP in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Parallelizing Gaussian Process Calculations in {R}",
+  author       = personList(as.person("Christopher J. Paciorek"),
+                   as.person("Benjamin Lipshitz"),
+                   as.person("Wei Zhuo"),
+                   as.person("Prabhat"),
+                   as.person("Cari G. Kaufman"),
+                   as.person("Rollin C. Thomas")),
+  journal      = "Journal of Statistical Software",
+  year         = "2015",
+  volume       = "63",
+  number       = "10",
+  pages        = "1--23",
+  url          = "http://www.jstatsoft.org/v63/i10/",
+
+  textVersion  =
+  paste("Christopher J. Paciorek, Benjamin Lipshitz, Wei Zhuo, Prabhat, Cari G. Kaufman, Rollin C. Thomas (2015).",
+        "Parallelizing Gaussian Process Calculations in R.",
+        "Journal of Statistical Software, 63(10), 1-23.",
+        "URL http://www.jstatsoft.org/v63/i10/.")
+)
+

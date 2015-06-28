@@ -1,0 +1,115 @@
+\name{remoteForwardsolve}
+\alias{remoteForwardsolve}
+\alias{remoteBacksolve}
+\title{
+  Solve a Distributed Triangular System
+}
+\description{
+  Solves a distributed system of linear equations where the coefficient
+  matrix is lower triangular. \code{remoteBacksolve} solves
+  \eqn{L^{\top} X = C} for vector or matrix \eqn{X}, while \code{remoteForwardsolve} solves
+  \eqn{L X = C}. Any of the matrices or vectors can  be contained within environments and 
+  ReferenceClass objects as well as the global environment on the slave processes.
+}
+\usage{
+remoteBacksolve(cholName, inputName, outputName, cholPos = '.GlobalEnv',
+ inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2 = NULL, h1 = 1,
+h2 = NULL)
+remoteForwardsolve(cholName, inputName, outputName, cholPos =
+'.GlobalEnv', inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2
+= NULL, h1 = 1, h2 = NULL)
+
+}
+\arguments{
+  \item{cholName}{
+    name of the input lower triangular matrix matrix (the matrix of coefficients), given as a character string, of the
+    object on the slave processes.
+}
+\item{inputName}{
+    name of the vector
+    or matrix being solved into (the right-hand side(s) of the
+    equations), given as a character string,  of the object on the slave processes.
+  }
+\item{outputName}{
+  the name to use for the output object, the solution vector or matrix, on the slave processes.
+}
+\item{cholPos}{
+    where to look for the lower triangular  matrix, given as a character string (unlike
+    \code{get}). This can indicate an environment, a list, or a ReferenceClass object. 
+}
+\item{inputPos}{
+    where to look for the input right-hand side matrix or vector, given as a character string (unlike
+    \code{get}). This can indicate an environment, a list, or a ReferenceClass object. 
+}
+\item{outputPos}{
+  where to do the assignment of the output matrix or vector, given as a character string (unlike
+    \code{assign}). This can indicate an environment or a ReferenceClass object. 
+}
+  \item{n1}{
+    a positive integer, the number of rows and columns of the input matrix.
+  }
+  \item{n2}{
+    a positive integer, the number of columns of the right-hand side
+    values. When equal to one, indicates a single right-hand side vector.
+  }
+  \item{h1}{
+    a positive integer, the block replication factor, \eqn{h}, relevant
+    for the input matrix and used for the solution (either for a vector,
+    or the rows of the solution for a matrix).
+  }
+  \item{h2}{
+    a positive integer, the block replication factor, \eqn{h}, relevant
+    for the columns of the solution when the right-hand side is a matrix.
+  }
+}
+\details{
+  Computes the solution to a distributed set of linear equations, with
+  either a single or multiple right-hand side(s) (i.e., solving into a
+  vector or a matrix). Note that these functions work for any
+  distributed lower triangular matrix, but \code{bigGP} currently only
+  provides functionality for computing distributed Cholesky factors,
+  hence the argument names \code{cholName} and \code{cholPos}.
+
+  When the right-hand side is vector that is stored as a vector, such as
+  created by \code{distributeVector} or
+  \code{remoteConstructRnormVector}, use \code{n2 = NULL}. When
+  multiplying by a one-column matrix, use \code{n2 = 1}.
+}
+\references{
+     Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and
+  R.C.  Thomas. 2015. Parallelizing Gaussian Process Calculations in
+  R. Journal of Statistical Software, in
+  press. \url{http://jstatsoft.org}.
+
+  Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. \url{http://arxiv.org/abs/1305.4886}.
+  }
+\seealso{
+  \code{\link{bigGP}}
+}
+\examples{
+\dontrun{
+if(require(fields)) {
+  SN2011fe <- SN2011fe_subset
+  SN2011fe_newdata <- SN2011fe_newdata_subset
+  SN2011fe_mle <- SN2011fe_mle_subset
+  nProc <- 3
+n <- nrow(SN2011fe)
+m <- nrow(SN2011fe_newdata)
+nu <- 2
+inputs <- c(as.list(SN2011fe), as.list(SN2011fe_newdata), nu = nu)
+prob <- krigeProblem$new("prob", numProcesses = nProc, n = n, m = m,
+predMeanFunction = SN2011fe_predmeanfunc, crossCovFunction = SN2011fe_crosscovfunc,  
+predCovFunction = SN2011fe_predcovfunc, meanFunction = SN2011fe_meanfunc, 
+covFunction = SN2011fe_covfunc,  inputs = inputs, params = SN2011fe_mle$par, 
+data = SN2011fe$flux, packages = c("fields"))
+remoteCalcChol(matName = "C", cholName = "L", matPos = "prob",
+  cholPos = "prob", n = n, h = prob$h_n)
+remoteForwardsolve(cholName = "L", inputName = "data", outputName =
+"tmp", cholPos = "prob", inputPos = "prob", n1 = n, h1 = prob$h_n)
+LinvY <- collectVector("tmp", n = n, h = prob$h_n)
+remoteBacksolve(cholName = "L", inputName = "tmp", outputName =
+"tmp2", cholPos = "prob", inputPos = "prob", n1 = n, h1 = prob$h_n)
+CinvY <- collectVector("tmp2", n = n, h = prob$h_n)
+}
+}
+}

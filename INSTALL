@@ -1,0 +1,71 @@
+INSTALLATION INSTRUCTIONS:
+
+Note that a working MPI installation is required on your system.
+
+Ideally, the standard installation procedure should be able to find
+the BLAS and MPI libraries needed for the package. However, in some
+cases, users may need to modify the installation to get it to work on
+their system.
+
+In particular, you may need to specify the paths to the MPI header
+files and shared libraries, as well as the MPI protocol on the system
+(e.g., openMPI vs MPICH). Here is an example installation on one of
+our test systems,
+
+R CMD INSTALL --configure-args="--with-mpi-include='/usr/common/usg/openmpi/1.4.5/intel/include' \
+--with-mpi-libpath='/usr/common/usg/openmpi/1.4.5/intel/lib' \
+--with-mpi-type='OPENMPI' "  bigGP_0.1-4.tar.gz
+
+and here is an example installation on another of our test systems:
+
+R CMD INSTALL --configure-args="--with-mpi=/opt/cray/mpt/5.4.0/xt/gemini/mpich2-gnu/46/" \
+bigGP_0.1-4.tar.gz
+
+By default we link against the same BLAS as that used by the R
+installed on the system. Note that computational efficiency relies
+heavily on using a fast, threaded BLAS, so if such a BLAS (e.g.,
+openBLAS, ATLAS, ACML, or MKL) is not on your system, you should
+consider setting up R with an external BLAS and then installing the
+bigGP package. See Section A.3.1 of the R Installation and Administration
+manual.
+
+If for some reason, you would like to use a different BLAS than that
+used by R, you may be able to use the configure.alt file provided with
+the package.  Rename it to 'configure'.  It will then search for your
+system default BLAS on package installation.  You can change which
+BLAS it uses via --with-blas in the --configure-args.  The files
+configure.ac, configure.alt.ac, ax_blas.m4, and ax_lapack.m4 in the 
+tools subdirectory are provided in case you need to generate a new 
+configure file using autoconf.
+
+Here is an example installation that specifies a specific path to MKL
+BLAS installed on one of our test systems (as well as the MPI
+specifications from above):
+
+R CMD INSTALL --configure-args="--with-blas='-L/usr/common/usg/mkl/10.2.2.025/lib/em64t \
+-lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread' \
+--with-mpi-include='/usr/common/usg/openmpi/1.4.5/intel/include' \
+--with-mpi-libpath='/usr/common/usg/openmpi/1.4.5/intel/lib' \
+--with-mpi-type='OPENMPI' "  bigGP_0.1-4.tar.gz
+
+Finally note that in our test installation on Fedora, we needed to set
+LD_LIBRARY_PATH to be able to find libmpi.so (in particular including
+/usr/lib64/openmpi/lib in LD_LIBRARY_PATH) when installing Rmpi. If
+Rmpi is already installed and working, this shouldn't be necessary
+solely to install bigGP.
+
+For installation from the source package (not the standard binary
+package) on a Mac, one may need to make sure that one's PATH include
+the directory containing mpicc as 'mpicc --showme' is used to help
+find the MPI header and library files. Our installation of openmpi via
+MacPorts has mpicc in /opt/local/lib/openmpi/bin.  Alternatively (and
+this seems to be needed to install Rmpi), one might specify the paths
+to the MPI header files and shared libraries, as well as the MPI
+protocol on the system (e.g., openMPI vs MPICH) via --configure-args
+in a fashion similar to that shown earlier in this file. Note that
+having the directory with the MPI executables in your PATH is also
+needed for using MPI at run-time. Finally, one would need to have
+gfortran set up such that the installation can find the gfortran
+library. I'm not sure how one goes about this.
+
+The INSTALL file for the pbdMPI package also provides useful tips.
