@@ -35,16 +35,17 @@ bigGP.init <- function(P = NULL, parallelRNGpkg = "rlecuyer", seed = 0){
       mpi.bcast.cmd(set.seed(mpi.comm.rank() + seed)) 
     } else{
       if(parallelRNGpkg == "rlecuyer"){
-        if(sum(unlist(mpi.remote.exec(require, "rlecuyer", ret = TRUE))) != .bigGP$P)
-          stop("bigGP.init: error in loading rlecuyer on slaves.")
+        if(sum(unlist(mpi.remote.exec(requireNamespace, "rlecuyer", ret = TRUE))) != .bigGP$P)
+          stop("bigGP.init: error in using rlecuyer on slaves.")
         RNGkind("L'Ecuyer-CMRG")
         mpi.setup.rngstream(iseed = seed) # first value indicates the RNGkind
       } else{
         if(parallelRNGpkg == "rsprng"){
-          if(sum(unlist(mpi.remote.exec(require, "rsprng", ret = TRUE))) != .bigGP$P)
-           stop("bigGP.init: error in loading rsprng on slaves.")
-          mpi.bcast.Robj2slave(seed)
-          mpi.bcast.cmd(rsprng::init.sprng(nstream = .bigGP$P, streamno = mpi.comm.rank()-1, seed = seed))
+            stop("bigGP.init: the rsprng package is no longer available on CRAN. Advanced users who install rsprng from the CRAN archived packages can uncomment the appropriate lines in bigGP.init() below this stop() call and rebuild the bigGP package.")
+          #if(sum(unlist(mpi.remote.exec(requireNamespace, "rsprng", ret = TRUE))) != .bigGP$P)
+          # stop("bigGP.init: error in loading rsprng on slaves.")
+          #mpi.bcast.Robj2slave(seed)
+          #mpi.bcast.cmd(rsprng::init.sprng(nstream = .bigGP$P, streamno = mpi.comm.rank()-1, seed = seed))
         } else {
           warning('bigGP.init: parallelRNGpkg ', parallelRNGpkg, ' not recognized. Initializing process seeds sequentially; not guaranteed to give independent streams; please use rlecuyer or rsprng to be certain.')
           mpi.bcast.Robj2slave(seed)

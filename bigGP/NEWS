@@ -1,6 +1,6 @@
-Version 0.1-6 (6/29/15):
+Version 0.1-6 (6/30/15):
 
-* put rsprng into Additional_repositories in DESCRIPTION as it is no longer on CRAN
+* removed use of rsprng as it is no longer on CRAN; advanced users can uncomment the relevant lines in bigGP.init and rebuild bigGP from source if they have rsprng available
 
 * changed DESCRIPTION to point to JSS article rather than arXiv
 

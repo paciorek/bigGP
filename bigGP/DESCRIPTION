@@ -9,7 +9,6 @@ Depends:
     methods
 Suggests:
     rlecuyer, 
-    rsprng,
     fields
 LazyData: Yes
 Description: Distributes Gaussian process calculations across nodes
@@ -20,7 +19,6 @@ Description: Distributes Gaussian process calculations across nodes
     provides an API for basic matrix calculations with distributed 
     covariance matrices, including Cholesky decomposition, back/forwardsolve, 
     crossproduct, and matrix multiplication.
-Additional_repositories: http://cran.r-project.org/src/contrib/Archive
 SystemRequirements: OpenMPI or MPICH2
 OS_type: unix
 License: GPL (>= 2)

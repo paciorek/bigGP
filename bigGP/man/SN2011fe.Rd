@@ -71,11 +71,11 @@ posterior realizations.
   (arXiv:1302.1292v1), DOI: \url{http://dx.doi.org/10.1051/0004-6361/201221008}.
 
   For more details on the statistical model used to fit the data, see:
-     Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and
-  R.C.  Thomas. 2015. Parallelizing Gaussian Process Calculations in
-  R. Journal of Statistical Software, in
-  press. \url{http://jstatsoft.org}.
 
+  Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and
+  R.C.  Thomas. 2015. Parallelizing Gaussian Process Calculations in
+  R. Journal of Statistical Software, 63(10), 1-23. \url{www.jstatsoft.org/v63/i10}.
+  
   or
   
   Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. \url{http://arxiv.org/abs/1305.4886}.

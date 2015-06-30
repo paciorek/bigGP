@@ -13,3 +13,5 @@ As of verson 0.1-6, bigGP development is occurring on github: github.com/paciore
 bigGP requires Rmpi and MPI. See INSTALL for more details on non-standard installations. 
 
 bigGP makes use of the BLAS. By default it links against the same BLAS as that used by the R installed on your system. Note that computational efficiency relies heavily on using a fast, threaded BLAS, so if such a BLAS (e.g., openBLAS, ACML, or MKL) is not on your system, you should consider setting up R with an external BLAS and then installing this package.
+
+You can make use of rsprng for parallel random number generation in place of the default relecuyer by specifying it as the 'parallelRNGpkg' argument to bigGP.init(), but the rsprng package has been archived on CRAN and would need to be installed from http://cran.r-project.org/src/contrib/Archive/rsprng/. You will need to uncomment the relevant lines in bigGP.init() and rebuild bigGP from source to make use of this functionality as CRAN policy does not allow us to retain use of rsprng functions in the bigGP package code.
