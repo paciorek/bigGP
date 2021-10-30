@@ -62,23 +62,23 @@ in numerically non-positive definite covariance matrices when simulating
 posterior realizations. 
 }
 \source{
-\url{http://snfactory.lbl.gov/snf/data/SN2011fe.tar.gz}
+\url{https://snfactory.lbl.gov/snf/data/SNfactory_Pereira_etal_2013_SN2011fe.tar.gz}
 }
 \references{
   For more details on the dataset, see:
   R. Pereira, et al., 2013, "Spectrophotometric time series of SN 2011fe from
   the Nearby Supernova Factory," Astronomy and Astrophysics, accepted
-  (arXiv:1302.1292v1), DOI: \url{http://dx.doi.org/10.1051/0004-6361/201221008}.
+  (arXiv:1302.1292v1), DOI: \doi{10.1051/0004-6361/201221008}.
 
   For more details on the statistical model used to fit the data, see:
 
   Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and
   R.C.  Thomas. 2015. Parallelizing Gaussian Process Calculations in
-  R. Journal of Statistical Software, 63(10), 1-23. \url{www.jstatsoft.org/v63/i10}.
+  R. Journal of Statistical Software, 63(10), 1-23. \doi{10.18637/jss.v063.i10}.
   
   or
   
-  Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. \url{http://arxiv.org/abs/1305.4886}.
+  Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. \url{https://arxiv.org/abs/1305.4886}.
 }
 \seealso{\code{\link{krigeProblem-class}}}
 \examples{

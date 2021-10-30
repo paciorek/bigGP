@@ -1,3 +1,12 @@
+Version 0.1-7 (10/30/21):
+
+* ran autoupdate for consistency with Autoconf 2.71, per CRAN request.
+
+* add use of 'R_registerRoutines' and 'R_useDynamicSymbols' to avoid
+CRAN check NOTE.
+
+* updated references to point to JSS article DOI and use https.
+
 Version 0.1-6 (6/30/15):
 
 * removed use of rsprng as it is no longer on CRAN; advanced users can uncomment the relevant lines in bigGP.init and rebuild bigGP from source if they have rsprng available

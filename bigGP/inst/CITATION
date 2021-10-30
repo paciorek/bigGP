@@ -13,12 +13,13 @@ citEntry(entry = "Article",
   volume       = "63",
   number       = "10",
   pages        = "1--23",
-  url          = "http://www.jstatsoft.org/v63/i10/",
+  url          = "https://doi.org/10.18637/jss.v063.i10",
+  doi          = "10.18637/jss.v063.i10",
 
   textVersion  =
   paste("Christopher J. Paciorek, Benjamin Lipshitz, Wei Zhuo, Prabhat, Cari G. Kaufman, Rollin C. Thomas (2015).",
         "Parallelizing Gaussian Process Calculations in R.",
         "Journal of Statistical Software, 63(10), 1-23.",
-        "URL http://www.jstatsoft.org/v63/i10/.")
+        "URL https://doi.org/10.18637/jss.v063.i10.")
 )
 

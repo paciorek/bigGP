@@ -59,9 +59,9 @@ inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2, h1 = 1, h2 = 1)
 \references{
   Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and
   R.C.  Thomas. 2015. Parallelizing Gaussian Process Calculations in
-  R. Journal of Statistical Software, 63(10), 1-23. \url{www.jstatsoft.org/v63/i10}.
+  R. Journal of Statistical Software, 63(10), 1-23. \doi{10.18637/jss.v063.i10}.
 
-  Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. \url{http://arxiv.org/abs/1305.4886}.
+  Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. \url{https://arxiv.org/abs/1305.4886}.
   }
 \seealso{
   \code{\link{bigGP}}

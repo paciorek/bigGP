@@ -1,5 +1,6 @@
 dnl Process this file with autoconf to produce a configure script
-AC_INIT(DESCRIPTION)
+AC_INIT
+AC_CONFIG_SRCDIR([DESCRIPTION])
 
 dnl Determine R_HOME.
 : ${R_HOME=‘R RHOME‘}
@@ -10,8 +11,7 @@ fi
 
 dnl One way is to specify both include and lib paths
 AC_ARG_WITH([mpi-include],
-            AC_HELP_STRING([--with-mpi-include=INCLUDE_PATH],
-                           [location of MPI header files]),
+            AS_HELP_STRING([--with-mpi-include=INCLUDE_PATH],[location of MPI header files]),
             [mpi_include_path=$withval])
 if test -n "${mpi_include_path}" ; then
   MPI_INCLUDE_PATH="${mpi_include_path}"
@@ -29,8 +29,7 @@ else
 fi
 
 AC_ARG_WITH([mpi-libpath],
-            AC_HELP_STRING([--with-mpi-libpath=LIB_PATH],
-                           [location of MPI library files]),
+            AS_HELP_STRING([--with-mpi-libpath=LIB_PATH],[location of MPI library files]),
             [mpi_lib_path=$withval])
 if test -n "${mpi_lib_path}" ; then
   MPI_LIBPATH="${mpi_lib_path}"
@@ -51,8 +50,7 @@ fi
 MPITYPE="UNKNOWN"
 
 AC_ARG_WITH([mpi-type],
-            AC_HELP_STRING([--with-mpi-type=MPI_TYPE],
-                           [type of MPI: OPENMPI, MPICH2, LAM, or FPMPI]),
+            AS_HELP_STRING([--with-mpi-type=MPI_TYPE],[type of MPI: OPENMPI, MPICH2, LAM, or FPMPI]),
             [mpi_type=$withval])
 if test -n "${mpi_type}" ; then
   MPITYPE="${mpi_type}"
@@ -200,8 +198,7 @@ dnl 'Paths not specified'
 if test -z "${MPI_INCLUDE_PATH}" ; then
   dnl Another way is to specify MPI_ROOT, perhaps via --with-mpi
   AC_ARG_WITH(mpi,
-              AC_HELP_STRING([--with-mpi=LIB_PATH],
-                             [location of top-level MPI directory]),
+              AS_HELP_STRING([--with-mpi=LIB_PATH],[location of top-level MPI directory]),
               [ if test "${withval}" != "no"; then
                       MPI_ROOT=${withval}
                       MPI_INCLUDE_PATH="${MPI_ROOT}/include"
@@ -527,4 +524,5 @@ PKG_LIBS="\$(LAPACK_LIBS) \$(BLAS_LIBS) ${PKG_LIBS}"
 AC_SUBST(PKG_CPPFLAGS)
 AC_SUBST(PKG_LIBS)
 
-AC_OUTPUT(src/Makevars)
+AC_CONFIG_FILES([src/Makevars])
+AC_OUTPUT

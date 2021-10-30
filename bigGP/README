@@ -2,11 +2,11 @@ bigGP is a package for distributed Gaussian process calculations, with a specifi
 
 More details are available in:
 
-Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2015. Parallelizing Gaussian Process Calculations in R. Journal of Statistical Software, 63(10), 1-23. http://www.jstatsoft.org/v63/i10/.
+Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2015. Parallelizing Gaussian Process Calculations in R. Journal of Statistical Software, 63(10), 1-23. https://doi.org/10.18637/jss.v063.i10. 
 
 and
 
-Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. http://arxiv.org/abs/1305.4886.
+Paciorek, C.J., B. Lipshitz, W. Zhuo, Prabhat, C.G. Kaufman, and R.C.  Thomas. 2013. Parallelizing Gaussian Process Calculations in R. arXiv:1305.4886. https://arxiv.org/abs/1305.4886.
 
 As of verson 0.1-6, bigGP development is occurring on github: github.com/paciorek/bigGP.
 

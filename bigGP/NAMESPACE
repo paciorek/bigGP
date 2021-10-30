@@ -9,5 +9,6 @@ exportClasses(
 
 useDynLib(bigGP, .registration = TRUE)
 
-import("Rmpi")
-import("methods")
+import(Rmpi)
+import(methods)
+importFrom(stats, rnorm)
