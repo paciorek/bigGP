@@ -14,7 +14,7 @@ localCalc <- function(input1Name, input2Name, FUN, outputName, input1Pos, input2
     status <- try(assign(outputName, FUN(get(input1Name, pos = eval(as.name(input1Pos)))), pos = eval(as.name(outputPos)))) else
   status <- try(assign(outputName, FUN(get(input1Name, pos = eval(as.name(input1Pos))), get(input2Name, pos = eval(as.name(input2Pos)))),
                        pos = eval(as.name(outputPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 
@@ -36,7 +36,7 @@ localForwardsolve <- function(cholName, inputName, outputName, cholPos, inputPos
     }
     assign(outputName, output, pos = eval(as.name(outputPos)))
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 remoteBacksolve <- function(cholName, inputName, outputName, cholPos = '.GlobalEnv', inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2 = NULL, h1 = 1, h2 = NULL){
@@ -60,7 +60,7 @@ localBacksolve <- function(cholName, inputName, outputName, cholPos, inputPos, o
     }
     assign(outputName, output, pos = eval(as.name(outputPos)))
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 
@@ -80,7 +80,7 @@ localCalcChol <- function(matName, cholName, matPos, cholPos, n, h){
     out <- .Call("cholesky_wrapper", as.double(L), as.integer(n), as.integer(h), .bigGP$I, .bigGP$J, .bigGP$D, PACKAGE="bigGP")
     assign(cholName, L, eval(as.name(cholPos)))
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(out)
+  if(inherits(status, "try-error")) invisible(status) else invisible(out)
 }
 
 remoteMultChol <- function(cholName, inputName, outputName, cholPos = '.GlobalEnv', inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2 = NULL, h1 = 1, h2 = NULL){
@@ -100,7 +100,7 @@ localMultChol <-  function(cholName, inputName, outputName, cholPos, inputPos, o
     }    
     assign(outputName, output, eval(as.name(outputPos)))
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
  
 remoteCrossProdMatVec <- function(matName, inputName, outputName, matPos = '.GlobalEnv', inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2, h1 = 1, h2 = 1){
@@ -116,7 +116,7 @@ localCrossProdMatVec <- function(matName, inputName, outputName, matPos, inputPo
     .Call("mult_cross_wrapper", output, get(matName, eval(as.name(matPos))), get(inputName, eval(as.name(inputPos))), as.integer(n1), as.integer(n2), as.integer(h1), as.integer(h2), .bigGP$I, .bigGP$J, .bigGP$D, PACKAGE="bigGP")
     assign(outputName, output, eval(as.name(outputPos)))
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 remoteCrossProdMatSelf <- function(inputName, outputName, inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2, h1 = 1, h2 = 1){
@@ -132,7 +132,7 @@ localCrossProdMatSelf <- function(inputName, outputName, inputPos, outputPos, n1
     .Call("cross_prod_self_wrapper", output, get(inputName, eval(as.name(inputPos))), as.integer(n1), as.integer(n2), as.integer(h1), as.integer(h2), .bigGP$I, .bigGP$J, .bigGP$D, PACKAGE="bigGP")
     assign(outputName, output, eval(as.name(outputPos)))
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 remoteCrossProdMatSelfDiag <- function(inputName, outputName, inputPos = '.GlobalEnv', outputPos = '.GlobalEnv', n1, n2, h1 = 1, h2 = 1){
@@ -148,7 +148,7 @@ localCrossProdMatSelfDiag <- function(inputName, outputName, inputPos, outputPos
     .Call("cross_prod_self_diag_wrapper", output, get(inputName, eval(as.name(inputPos))), as.integer(n1), as.integer(n2), as.integer(h1), as.integer(h2), .bigGP$I, .bigGP$J, .bigGP$D, PACKAGE="bigGP")
     assign(outputName, output, eval(as.name(outputPos)))
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 remoteConstructRnormVector <- function(objName, objPos = '.GlobalEnv', n, h = 1){
@@ -186,5 +186,5 @@ localConstructRnormMatrix <- function(objName, objPos, n1, n2, h1, h2){
       }
     })
   }
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }

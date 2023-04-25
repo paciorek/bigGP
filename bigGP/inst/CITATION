@@ -1,13 +1,14 @@
 citHeader("To cite bigGP in publications use:")
 
-citEntry(entry = "Article",
+bibentry(
+  bibtype      = "Article",
   title        = "Parallelizing Gaussian Process Calculations in {R}",
-  author       = personList(as.person("Christopher J. Paciorek"),
-                   as.person("Benjamin Lipshitz"),
-                   as.person("Wei Zhuo"),
-                   as.person("Prabhat"),
-                   as.person("Cari G. Kaufman"),
-                   as.person("Rollin C. Thomas")),
+  author       = c(person("Christopher", "Paciorek"),
+                   person("Benjamin", "Lipshitz"),
+                   person("Wei", "Zhuo"),
+                   person("Prabhat"),
+                   person("Cari", "Kaufman"),
+                   person("Rollin", "Thomas")),
   journal      = "Journal of Statistical Software",
   year         = "2015",
   volume       = "63",

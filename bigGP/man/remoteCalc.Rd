@@ -1,7 +1,7 @@
 \name{remoteCalc}
 \alias{remoteCalc}
 \title{
-  Return a Distributed Vector to the Master Process
+  Do Arbitrary Calculations on One or Two Inputs
 }
 \description{
   \code{remoteCalc} applies a function to either one or two input

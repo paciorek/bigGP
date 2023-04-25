@@ -1,6 +1,6 @@
 #include "lib.h"
 
-double read_timer() {
+double read_timer(void) {
   struct timeval end;
   gettimeofday( &end, NULL );
   return end.tv_sec+1.e-6*end.tv_usec;

@@ -743,7 +743,7 @@ localKrigeProblemConstructMean <- function(problemName, obs, pred){
         dProblem$mean <- dProblem$meanFunction(dProblem$params,
                                                dProblem$inputs, dProblem$vectorIndices) else dProblem$mean <- numeric(0)
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 
@@ -783,5 +783,5 @@ localKrigeProblemConstructCov <- function(problemName, obs, pred, cross){
       dProblem$crossC <- tmp 
     }
   } )
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }

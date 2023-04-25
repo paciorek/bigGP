@@ -7,7 +7,7 @@
 \description{
   \code{remoteCrossProdMatSelf} multiplies the transpose of a
   distributed rectangular matrix by
-  itself. \code{remoteCrossProdMatSelf} calculates only the diagonal of
+  itself. \code{remoteCrossProdMatSelfDiag} calculates only the diagonal of
   the crossproduct. The objects can both be contained within environments or
   ReferenceClass objects as well as the global environment on the slave processes.
 }

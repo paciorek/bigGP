@@ -1,3 +1,9 @@
+Version 0.1.8 (2023-04-27)
+
+* declare 'read_timer()' as 'read_timer(void)' to satisfy CRAN requirements.
+
+* Fix a couple minor errors in Rd files.
+
 Version 0.1-7 (10/30/21):
 
 * ran autoupdate for consistency with Autoconf 2.71, per CRAN request.

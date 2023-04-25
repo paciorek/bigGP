@@ -10,7 +10,7 @@ push <- function(.tmp, objName = deparse(substitute(.tmp)), objPos = ".GlobalEnv
 
 localAssign <- function(nameToAssign, currentName, objPos = ".GlobalEnv"){
   status <- try(assign(nameToAssign, eval(as.name(currentName)), pos = eval(as.name(objPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 
@@ -32,7 +32,7 @@ pull <- function(objName, objPos = ".GlobalEnv", tag = 1){
 
 localPullTest <- function(objName, objPos){
   status <- try(get(objName, pos = eval(as.name(objPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 localPull <- function(objName, objPos, tag = 1){
@@ -53,7 +53,7 @@ collectDiagonal <- function(objName, objPos = '.GlobalEnv', n, h = 1){
 
 localCollectDiagonalTest <- function(objName, objPos, n, h){
   status <- try(get(objName, eval(as.name(objPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 
@@ -78,7 +78,7 @@ collectVector <- function(objName, objPos = '.GlobalEnv', n, h = 1){
 
 localCollectVectorTest <- function(objName, objPos, n, h){
   status <- try(get(objName, eval(as.name(objPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)
 }
 
 localCollectVector <- function(objName, objPos, n, h){
@@ -104,7 +104,7 @@ collectTriangularMatrix <- function(objName, objPos = '.GlobalEnv', n, h = 1){
 
 localCollectTriangularMatrixTest <- function(objName, objPos, n, h){
   status <- try(get(objName, eval(as.name(objPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)  
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)  
 }
 
 localCollectTriangularMatrix <- function(objName, objPos, n, h){
@@ -127,7 +127,7 @@ collectRectangularMatrix <- function(objName, objPos = '.GlobalEnv', n1, n2, h1 
 
 localCollectRectangularMatrixTest <- function(objName, objPos, n1, n2, h1, h2){
   status <- try(get(objName, eval(as.name(objPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)  
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)  
 }
 
 localCollectRectangularMatrix <- function(objName, objPos, n1, n2, h1, h2){
@@ -150,7 +150,7 @@ distributeVector <- function(obj, objName = deparse(substitute(obj)), objPos = '
 
 localDistributeVectorTest <- function(objName, objPos, n, h){
   status <- try(assign(objName, 0, eval(as.name(objPos))))
-  if(class(status) == "try-error") invisible(status) else invisible(NULL)  
+  if(inherits(status, "try-error")) invisible(status) else invisible(NULL)  
 }
 
 localDistributeVector <- function(objName, objPos, n, h){
