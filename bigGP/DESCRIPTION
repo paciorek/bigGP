@@ -23,6 +23,7 @@ SystemRequirements: OpenMPI or MPICH2
 OS_type: unix
 License: GPL (>= 2)
 URL: https://doi.org/10.18637/jss.v063.i10
+BugReports: https://github.com/paciorek/bigGP/issues
 Collate:
     'auxil.R'
     'bigGP.R'
