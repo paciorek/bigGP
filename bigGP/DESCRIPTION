@@ -1,6 +1,6 @@
 Package: bigGP
 Version: 0.1.9
-Date: 2025-04-10
+Date: 2025-04-09
 Title: Distributed Gaussian Process Calculations
 Authors@R: c(person("Christopher", "Paciorek", email = "paciorek@stat.berkeley.edu", role = c("aut", "cre")), person("Benjamin","Lipshitz", role = c("aut")), person(family = "Prabhat", role = c("ctb")), person("Cari", "Kaufman", role = c("ctb")), person("Tina", "Zhuo", role = c("ctb")), person("Rollin", "Thomas", role = c("ctb")))
 Depends:
@@ -20,6 +20,7 @@ Description: Distributes Gaussian process calculations across nodes
     covariance matrices, including Cholesky decomposition, back/forwardsolve, 
     crossproduct, and matrix multiplication.
 SystemRequirements: OpenMPI or MPICH2
+BuildResaveData: best
 OS_type: unix
 License: GPL (>= 2)
 URL: https://doi.org/10.18637/jss.v063.i10
