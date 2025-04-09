@@ -40,10 +40,10 @@ else
   fi
 fi
 
-if test -n "${MPI_INCLUDE_PATH}" && -z "${MPI_LIBPATH}" ; then
+if test -n "${MPI_INCLUDE_PATH}" && test -z "${MPI_LIBPATH}" ; then
   AC_MSG_ERROR([Must specify both the include and lib paths])
 fi
-if test -z "${MPI_INCLUDE_PATH}" && %>% bas -n "${MPI_LIBPATH}" ; then
+if test -z "${MPI_INCLUDE_PATH}" && test -n "${MPI_LIBPATH}" ; then
   AC_MSG_ERROR([Must specify both the include and lib paths])
 fi
 
@@ -82,8 +82,8 @@ AC_CHECK_PROG(MPICH2VERSION, mpich2version, mpich2version, "F")
 
 dnl For OpenMPI
 if test -z "${MPI_INCLUDE_PATH}" ; then
-  if test "$MPITYPE" = "UNKNOWN" || "$MPITYPE" = "OPENMPI" ; then
-    if test "$SED" != "F" && "$MPICC" != "F" && "$OMPI_INFO" != "F" ; then
+  if test "$MPITYPE" = "UNKNOWN" || test "$MPITYPE" = "OPENMPI" ; then
+    if test "$SED" != "F" && test "$MPICC" != "F" && test "$OMPI_INFO" != "F" ; then
       echo "found sed, mpicc, and ompi_info ..."
       TMP_INC="F"
       TMP_LIB="F"
@@ -122,7 +122,7 @@ if test -z "${MPI_INCLUDE_PATH}" ; then
       done
       IFS="${TMP_IFS}"
 
-      if test "${TMP_INC}" != "F" && "${TMP_LIB}" != "F" ; then
+      if test "${TMP_INC}" != "F" && test "${TMP_LIB}" != "F" ; then
         echo "found mpi.h and libmpi.so ..."
         echo ">> TMP_INC = ${TMP_INC}"
         echo ">> TMP_LIB = ${TMP_LIB}"
@@ -137,10 +137,10 @@ fi
 
 dnl For MPICH2
 if test -z "${MPI_INCLUDE_PATH}" ; then
-#  if test "$MPITYPE" = "UNKNOWN" || "$MPITYPE" = "MPICH2" ; then
+#  if test "$MPITYPE" = "UNKNOWN" || test "$MPITYPE" = "MPICH2" ; then
 ### MPICH2 users have to specify --with-mpi-type=MPICH2 to get this.
   if test "$MPITYPE" = "MPICH2" ; then
-    if test "$SED" != "F" && "$MPICC" != "F" && "$MPICH2VERSION" != "F" ; then
+    if test "$SED" != "F" && test "$MPICC" != "F" && test "$MPICH2VERSION" != "F" ; then
       echo "found sed, mpicc, and mpich2version ..."
       TMP_INC="F"
       TMP_LIB="F"
@@ -180,7 +180,7 @@ if test -z "${MPI_INCLUDE_PATH}" ; then
       done
       IFS="${TMP_IFS}"
 
-      if test "${TMP_INC}" != "F" && "${TMP_LIB}" != "F" ; then
+      if test "${TMP_INC}" != "F" && test "${TMP_LIB}" != "F" ; then
         echo "found mpi.h and libmpich.so ..."
         echo ">> TMP_INC = ${TMP_INC}"
         echo ">> TMP_LIB = ${TMP_LIB}"
@@ -492,7 +492,7 @@ dnl Now we have found the include and lib paths and may know the type
 AC_CHECK_LIB(util, openpty, [ MPI_LIBS="$MPI_LIBS -lutil" ])
 AC_CHECK_LIB(pthread, main, [ MPI_LIBS="$MPI_LIBS -lpthread" ])
 
-if test "$MPITYPE" = "OPENMPI" || "$MPITYPE" = "LAM" || "$MPITYPE" = "MPICH2" || "$MPITYPE" = "FPMPI"; then
+if test "$MPITYPE" = "OPENMPI" || test "$MPITYPE" = "LAM" || test "$MPITYPE" = "MPICH2" || test "$MPITYPE" = "FPMPI"; then
   MPI_DEFS="-DMPI2"
 fi
 
