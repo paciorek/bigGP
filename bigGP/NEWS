@@ -1,3 +1,9 @@
+Version 0.1.9 (2025-04-10)
+
+* Remove `-a` and `-o` bashisms from `configure.ac`.
+
+* Fix `\link` syntax in Rd to link to Rmpi package.
+
 Version 0.1.8 (2023-04-27)
 
 * declare 'read_timer()' as 'read_timer(void)' to satisfy CRAN requirements.

@@ -1,6 +1,6 @@
 Package: bigGP
-Version: 0.1.8
-Date: 2023-04-27
+Version: 0.1.9
+Date: 2025-04-10
 Title: Distributed Gaussian Process Calculations
 Authors@R: c(person("Christopher", "Paciorek", email = "paciorek@stat.berkeley.edu", role = c("aut", "cre")), person("Benjamin","Lipshitz", role = c("aut")), person(family = "Prabhat", role = c("ctb")), person("Cari", "Kaufman", role = c("ctb")), person("Tina", "Zhuo", role = c("ctb")), person("Rollin", "Thomas", role = c("ctb")))
 Depends:

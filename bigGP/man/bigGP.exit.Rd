@@ -27,7 +27,7 @@ bigGP.quit(save = "no")
    If leaving R altogether, one simply uses \code{bigGP.quit}. 
 }
 \seealso{
-  \code{\link{mpi.exit}}
-  \code{\link{mpi.quit}}
+  \code{\link[Rmpi]{mpi.exit}}
+  \code{\link[Rmpi]{mpi.quit}}
 }
 \keyword{utilities}
